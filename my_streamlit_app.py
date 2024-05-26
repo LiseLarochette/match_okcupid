@@ -1,51 +1,24 @@
 import streamlit as st
 import pandas as pd
-from datetime import datetime
+from sklearn.neighbors import NearestNeighbors
 
-st.title('Application de Lise LAROCHETTE')
-
-st.write("Dataframe")
-
-link = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
-df_voitures = pd.read_csv(link)
-
-#afficher la DF
-df_voitures
+# Charger les données
+final_df_cupid = pd.read_csv('hearthack_final_df.csv')
 
 
-#créer un filtre
+# Préparer l'interface utilisateur
+st.title("💘 Application de Recommandation de Match Idéal")
+st.header("Entrez vos informations pour trouver votre match parfait !")
 
-# Créer un bouton pour filtrer par continent "Europe."
-if st.button("Filtrer par continent 'Europe.'"):
-    df_filtered = df_voitures[df_voitures['continent'].str.contains('Europe')]
-    # Afficher le DataFrame filtré
-    st.write("DataFrame après le filtre :")
-    st.write(df_filtered)
-
-if st.button("Filtrer par continent 'US.'"):
-    df_filtered = df_voitures[df_voitures['continent'].str.contains('US')]
-    # Afficher le DataFrame filtré
-    st.write("DataFrame après le filtre :")
-    st.write(df_filtered)
-
-if st.button("Filtrer par continent 'Japan.'"):
-    df_filtered = df_voitures[df_voitures['continent'].str.contains('Japan')]
-    # Afficher le DataFrame filtré
-    st.write("DataFrame après le filtre :")
-    st.write(df_filtered)
-
-
-#afficher un graphique en bar
-st.title("Puissance des voitures (cylindres) par nationalité")
-st.bar_chart(data=df_voitures, x='continent', y='cylinders')
-st.write("On remarque que les voitures américaines sont les plus puissantes.")
-
-#afficher un graphique en courbe
-import numpy as np
-
-st.title("Consommation des voitures en fonction de la puissance (cylindres)")
-st.line_chart(data=df_voitures, x= 'weightlbs', y='mpg')
-st.write("On remarque que les voitures qui ont un poids entre 2000 et 2800 lbs consomment le plus.")
-
-
-
+# Entrées utilisateur
+age = st.slider("Âge", 18, 100, 28)
+status = st.selectbox("Statut", ["Single", "In a relationship"])
+sex = st.selectbox("Sexe", ["Male", "Female"])
+orientation = st.selectbox("Orientation", ["Straight", "Gay", "Bisexual"])
+body_type = st.selectbox("Type de corps", ["Fit", "Average", "Athletic", "Overweight"])
+diet = st.selectbox("Régime alimentaire", ["Anything", "Vegetarian", "Vegan"])
+education = st.selectbox("Niveau d'éducation", ["High school", "College", "Wildcodeschool", "Graduate"])
+height = st.slider("Taille (en cm)", 140, 220, 180)
+job = st.selectbox("Métier", ["Other", "Computer / hardware / software", "Art / music / writing", "Sales / marketing / biz dev"])
+pets = st.selectbox("Animaux de compagnie", ["Likes pets", "Does not like pets"])
+smokes = st.selectbox("Fume", ["No", "Yes"])
