@@ -6,11 +6,12 @@ from sklearn.neighbors import NearestNeighbors
 final_df_cupid = pd.read_csv('hearthack_final_df.csv')
 
 # Préparer l'interface utilisateur
-st.title("💘 Application de Recommandation de Match Idéal")
-st.header("Entrez vos informations pour trouver votre match parfait !")
+st.markdown("<h1 style='text-align: center; color: #FF69B4;'>💘 HACKHEART 💘</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; color: #008080;'>Entrez vos informations pour trouver votre match parfait !</h2>", unsafe_allow_html=True)
 
 # Entrées utilisateur
-age = st.slider("Âge", 18, 100, 28)
+nom = st.text_input("Entrez votre nom")
+age = st.slider("Âge", 18, 100, 60)
 user_status = st.selectbox("Statut", ["Single", "In a relationship"])
 user_sex = st.selectbox("Sexe", ["Male", "Female"])
 user_orientation = st.selectbox("Orientation", ["Straight", "Gay", "Bisexual"])
@@ -107,20 +108,22 @@ def find_ideal_match():
     nearest_neighbor_index = indices[0][1]
     nearest_neighbor_info = filtered_df.iloc[nearest_neighbor_index]
 
+    #
     # Afficher les résultats
-    st.subheader("Votre match idéal :")
-    st.write(f"Nom : {nearest_neighbor_info['name']}")
-    st.write(f"Âge : {nearest_neighbor_info['age']}")
-    st.write(f"Sexe : {'Homme' if nearest_neighbor_info['sex'] == 1 else 'Femme'}")
-    st.write(f"Orientation : {'Straight' if nearest_neighbor_info['orientation_straight'] == 1 else ('Gay' if nearest_neighbor_info['orientation_gay'] == 1 else 'Bisexual')}")
-    st.write(f"Type de corps : {nearest_neighbor_info['body_type']}")
-    st.write(f"Régime alimentaire : {nearest_neighbor_info['diet']}")
-    st.write(f"Éducation : {nearest_neighbor_info['education']}")
-    st.write(f"Taille : {nearest_neighbor_info['height']}")
-    st.write(f"Métier : {nearest_neighbor_info['job']}")
-    st.write(f"Animaux de compagnie : {'Aime les animaux' if nearest_neighbor_info['pets'] == 1 else 'Naime pas les animaux'}")
-    st.write(f"Fume : {'Non' if nearest_neighbor_info['smokes'] == 0 else 'Oui'}")
+    st.markdown("<h2 style='text-align: center; color: #FF69B4;'>Votre match idéal :</h2>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Nom :</b> {nearest_neighbor_info['name']}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Âge :</b> {nearest_neighbor_info['age']}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Sexe :</b> {'Homme' if nearest_neighbor_info['sex'] == 1 else 'Femme'}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Orientation :</b> {'Straight' if nearest_neighbor_info['orientation_straight'] == 1 else ('Gay' if nearest_neighbor_info['orientation_gay'] == 1 else 'Bisexual')}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Type de corps :</b> {nearest_neighbor_info['body_type']}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Régime alimentaire :</b> {nearest_neighbor_info['diet']}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Éducation :</b> {nearest_neighbor_info['education']}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Taille :</b> {nearest_neighbor_info['height']}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Métier :</b> {nearest_neighbor_info['job']}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Animaux de compagnie :</b> {'Aime les animaux' if nearest_neighbor_info['pets'] == 1 else 'Naime pas les animaux'}</p>", unsafe_allow_html=True)
+    st.write(f"<p style='font-size: 20px;'><b>Fume :</b> {'Non' if nearest_neighbor_info['smokes'] == 0 else 'Oui'}</p>", unsafe_allow_html=True)
     st.image(f"{nearest_neighbor_info['Lien_photo']}")
+
 # Ajouter un bouton pour générer le match idéal
 if st.button("Trouve ton match idéal"):
     find_ideal_match()
