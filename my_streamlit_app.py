@@ -1,3 +1,4 @@
+pip install scikit_learn
 import streamlit as st
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
