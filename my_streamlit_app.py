@@ -5,6 +5,8 @@ from sklearn.neighbors import NearestNeighbors
 # Charger les données
 final_df_cupid = pd.read_csv('hearthack_final_df.csv')
 
+
+
 # Préparer l'interface utilisateur
 st.title("💘 Application de Recommandation de Match Idéal")
 st.header("Entrez vos informations pour trouver votre match parfait !")
