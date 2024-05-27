@@ -1,0 +1,49 @@
+# Installer virtualenv
+$ pip install virtualenv
+
+# Acceder au dossier du projet
+$ cd my_folder
+
+# Créer l'environnement virtuel  `venv`
+$ virtualenv venv
+
+
+# Indiquer l'interpreteur (2.7) à utiliser pour notre environnement 'venv'
+$ virtualenv -p /usr/bin/python2.7 venv
+
+# Activer `venv`
+$ source venv/bin/activate
+
+# Désactiver `venv`
+$ deactivate
+
+# Générer les bibliothéques utilisées
+$ venv/bin/pip freeze > requirements.txt
+
+#Installer les bibliothèques automatiquement depuis le fichier 'requirements.txt' 
+$ venv2/bin/pip install -r requirements.txt
+environnement virtuel python windows
+# Installer virtualenv
+$ pip install virtualenv
+
+# Acceder au dossier du projet
+$ cd my_folder
+
+# Créer l'environnement virtuel  `venv`
+$ virtualenv venv
+
+# Indiquer l'interpreteur (2.7) à utiliser pour notre environnement 'venv'
+$ virtualenv -p /usr/bin/python2.7 venv
+
+# Activer `venv`
+$ venv\Scripts\activate
+
+# Désactiver `venv`
+$ venv\Scripts\deactivate
+
+# Générer les bibliothéques utilisées
+$ venv\Scripts\pip freeze > requirements.txt
+
+# Installer les bibliothèques automatiquement depuis le fichier 'requirements.txt'
+
+$ venv\Scripts\pip install Flask
