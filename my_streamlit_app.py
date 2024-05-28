@@ -126,4 +126,4 @@ def find_ideal_match():
 
 # Ajouter un bouton pour générer le match idéal
 if st.button("Trouve ton match idéal"):
-    find_ideal_match()
+    find_ideal_match() 
